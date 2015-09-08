@@ -29,7 +29,8 @@ def visualize(model, layerNumber, neuronShape, imagesPerRow, filename="layerVisu
 		for representation in weights[0]:
 			subImages.append(Image.fromarray(reshape(scaler(representation), neuronShape).astype('float32')).convert(mode='L'))
 
-		imagesPerColumn = ceil(len(subImages) / imagesPerRow)
+		imagesPerColumn = int(ceil(len(subImages) / imagesPerRow))
+                print("The number of imagesPerColumn is:", imagesPerColumn)
 
 		image = Image.new('L', (imagesPerRow * neuronShape[0] + imagesPerRow - 1, imagesPerColumn * neuronShape[1] + imagesPerColumn - 1))
 
